@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A collection of SEO and WordPress tools by KDS Zahid. Easily access tools for keyword checking, link extraction, and more.">
+        <title>Tools By KDS Zahid</title>
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    
+        <!-- Info  -->    
+        <meta property="og:title" content="Tools By KDS Zahid" />
+        <meta property="og:site_name" content="Tools" />
+    
+        <meta property="og:description" content="Created with ❤️ by Zahid Hasan" />
+        <meta property="og:image" content="kdszahid.png" />
+        <meta property="og:url" content="https://zahidhasan.com.bd" />
+        <meta property="og:type" content="website" />
+    
+    
+        <style>
+            * {margin:0; padding:0;}
+            body { font-family: Arial, sans-serif; background-color: #f4f4f4; text-align: center; margin: auto; }
+            header { background-color: #333; color: white; padding: 10px; text-align: center; }
+            nav ul { list-style-type: none; padding: 0; }
+            nav ul li { display: inline; margin-right: 15px; }
+            nav ul li a { color: white; text-decoration: none; }
+            footer { text-align: center; padding: 10px; background-color: #333; color: white; margin-top: 20px; width:100%; position:fixed; bottom:0; right:0; }
+            a {color: white;}
+
+            
+            /*_______________________button_desing__________________*/
+            .linkbtn {
+                
+            }
+
+            .linkbtn li{
+                background: aqua;
+                display:inline-block;
+                margin: 5px;
+                padding: 5px;
+            }
+            .linkbtn li a{
+                font-size:15px;
+                color:black;
+                font-weight: bold;
+                text-decoration:none;
+            }
+
+
+            .block2 {
+                position: relative;
+                /* margin: 300px auto 0; */
+                /* width: 500px; */
+                /* height: 250px; */
+                /* background: linear-gradient(0deg, #000, #272727); */
+                background-color: black;
+                border-radius: 20px;
+            }
+
+            .block2:before, .block2:after {
+                content: '';
+                position: absolute;
+                left: -2px;
+                top: -2px;
+                background: linear-gradient(45deg, black, cyan);
+                background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00,#ffff00, #ff0000, #fb0094, #0000ff, #00ff00,#ffff00, #ff0000);
+                background-size: 400%;
+                width: calc(100% + 4px);
+                height: calc(100% + 4px);
+                z-index: -1;
+                animation: steam 20s linear infinite;
+                border-radius: 20px;
+            }
+
+            @keyframes steam {
+                0% {
+                    background-position: 0 0;
+                }
+                50% {
+                    background-position: 400% 0;
+                }
+                100% {
+                    background-position: 0 0;
+                }
+            }
+
+            .block2:after {
+                filter: blur(50px);
+            }
+
+            .block2:hover a{
+                color: white;
+            }
+            .block2:hover{
+                animation: chcolor 5s linear infinite; 
+            }
+            @keyframes chcolor {
+                100%{
+                    filter: hue-rotate(360deg);
+                }
+                
+            }
+            /*_______________________button_desing__end________________*/
+
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Tools By KDS Zahid</h1>
+            <!-- <nav>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                    </ul>
+                </nav>
+            -->
+        </header>
+
+        <main>
+            <section>
+                <br>
+               
+                <img src="https://woofaw.zahidhasan.com.bd/wp-content/uploads/2024/11/KDS-Zahid.png" alt="KDS Zahid">
+                <br>
+                <br>
+                <br>
+                
+                 <!-- Display sections with headings and backlinks -->
+            </section>
+            <section id="links-container">
+                <!-- Dynamic content will be added here -->
+            </section>
+            <section>
+                <!-- Import the component -->
+                <!--<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>-->
+                <!--<style>-->
+                <!--    model-viewer{-->
+                <!--        width: 100%;-->
+                <!--        height: 80vh;-->
+                <!--        margin: auto;-->
+                <!--    }-->
+                <!--</style>-->
+
+                <!-- Use it like any other HTML element -->
+                <model-viewer alt="3d_model" src="https://3d.zahidhasan.com.bd/z_One_3d_model.glb" ar environment-image="" poster="https://3d.zahidhasan.com.bd/zahid.png" shadow-intensity="1" camera-controls touch-action="pan-y"  autoplay auto-rotate interaction-prompt-threshold="1500" enable-pan></model-viewer>
+
+                <iframe src="https://3d.zahidhasan.com.bd/" width="100%" height="800px" frameborder="0" allowfullscreen></iframe>
+
+            </section>
+
+            <br>
+        </main>
+
+       
+    <!-- footer -->
+    <footer>
+    <p><span class="copyright">©</span> <span id="year"></span> Created with ❤️ by Zahid Hasan</p>
+</footer>
+
+<script>
+    // Dynamically set the year in the footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+<script>
+    // JSON URL
+    const jsonUrl = 'https://raw.githubusercontent.com/kds-zahid/kds-zahid/main/backlinks.json';
+
+    // Dynamically load and display content
+    fetch(jsonUrl)
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('links-container');
+            if (data.sections) {
+                data.sections.forEach(section => {
+                    if (section.heading) {
+                        // Add a break before the heading
+                        container.appendChild(document.createElement('br'));
+
+                        // Create the heading
+                        const heading = document.createElement('h2');
+                        heading.textContent = section.heading;
+                        container.appendChild(heading);
+
+                        // Add a break after the heading
+                        container.appendChild(document.createElement('br'));
+                    }
+
+                    // Create and append the list
+                    const list = document.createElement('ul');
+                    list.className = 'linkbtn';
+                    section.backlinks.forEach(link => {
+                        const listItem = document.createElement('li');
+                        listItem.className = 'block2';
+                        const anchor = document.createElement('a');
+                        anchor.href = link.url;
+                        anchor.textContent = link.name;
+                        anchor.target = '_blank';
+                        listItem.appendChild(anchor);
+                        list.appendChild(listItem);
+                    });
+                    container.appendChild(list);
+                });
+            }
+        })
+        .catch(error => console.error('Error fetching JSON:', error));
+
+    // Dynamically set the year in the footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+    </body>
+    </html>
